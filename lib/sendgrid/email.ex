@@ -71,7 +71,7 @@ defmodule SendGrid.Email do
   You can set a default Phoenix View to use for rendering templates. Just set the `:phoenix_view`
   config value.
 
-      config :sendgrid,
+      config :noizu_sendgrid,
         phoenix_view: MyApp.Web.EmailView
 
 
@@ -79,7 +79,7 @@ defmodule SendGrid.Email do
 
   You can set a default layout to render the view in. Just set the `:phoenix_layout` config value.
 
-      config :sendgrid,
+      config :noizu_sendgrid,
         phoenix_layout: {MyApp.Web.EmailView, :layout}
 
   """
@@ -690,7 +690,7 @@ defmodule SendGrid.Email do
   Alernatively, you can set a default layout to use by setting the `:phoenix_view` key in your config as
   an atom which will be used for both text and HTML emails.
 
-      config :sendgrid,
+      config :noizu_sendgrid,
         phoenix_layout: {MyApp.Web.EmailView, :layout}
 
   ## Examples
@@ -871,7 +871,7 @@ defmodule SendGrid.Email do
     unless mod do
       raise ArgumentError,
             "Phoenix view is expected to be set or configured. " <>
-              "Ensure your config for :sendgrid includes a value for :phoenix_view or " <>
+              "Ensure your config for :noizu_sendgrid includes a value for :phoenix_view or " <>
               "explicity set the Phoenix view with `put_phoenix_view/2`."
     end
 
@@ -920,7 +920,7 @@ defmodule SendGrid.Email do
   end
 
   defp config(key) do
-    Application.get_env(:sendgrid, key)
+    Application.get_env(:noizu_sendgrid, key)
   end
 
   defimpl Jason.Encoder do
@@ -985,7 +985,7 @@ defmodule SendGrid.Email do
                       |> update_in([:mail_settings, :sandbox_mode, :enable], fn(p) ->
                         cond do
                           is_boolean(p) -> p
-                          :else -> Application.get_env(:sendgrid, :sandbox_enable, email.sandbox)
+                          :else -> Application.get_env(:noizu_sendgrid, :sandbox_enable, email.sandbox)
                         end
                       end)
                     end)

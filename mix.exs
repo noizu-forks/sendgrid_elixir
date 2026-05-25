@@ -2,8 +2,8 @@ defmodule SendGrid.Mixfile do
   use Mix.Project
 
   def project do
-    [app: :sendgrid,
-     version: "2.0.1",
+    [app: :noizu_sendgrid,
+     version: "2.1.0",
      elixir: "~> 1.4",
      package: package(),
      compilers: compilers(Mix.env),
